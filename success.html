@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Welcome — The Performance Institute</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background: #f0f2f5;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+    }
+    .card {
+      background: #fff;
+      border-radius: 16px;
+      width: 100%;
+      max-width: 480px;
+      overflow: hidden;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+      text-align: center;
+    }
+    .card-header { background: #0a1628; padding: 28px 32px; }
+    .card-header h1 { color: #fff; font-size: 20px; font-weight: 600; }
+    .card-body { padding: 40px 32px; }
+    .checkmark {
+      width: 64px; height: 64px;
+      background: #e8f5e9;
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      margin: 0 auto 24px;
+      font-size: 32px;
+    }
+    h2 { font-size: 24px; color: #0a1628; margin-bottom: 12px; }
+    p { font-size: 15px; color: #555; line-height: 1.6; margin-bottom: 16px; }
+    .next-steps {
+      background: #f5f7fa;
+      border-radius: 12px;
+      padding: 20px;
+      text-align: left;
+      margin-top: 24px;
+    }
+    .next-steps h3 { font-size: 14px; font-weight: 600; color: #0a1628; margin-bottom: 12px; }
+    .next-steps li {
+      font-size: 14px; color: #444;
+      list-style: none; padding: 5px 0;
+      display: flex; gap: 8px; align-items: flex-start;
+    }
+    .next-steps li::before { content: "→"; color: #378ADD; font-weight: 700; }
+  </style>
+</head>
+<body>
+<div class="card">
+  <div class="card-header">
+    <h1>The Performance Institute</h1>
+  </div>
+  <div class="card-body">
+    <div class="checkmark">✓</div>
+    <h2>You're in.</h2>
+    <p>Your membership is confirmed. Dr. Michael will be in touch shortly to get you started.</p>
+    <div class="next-steps">
+      <h3>What happens next</h3>
+      <ul>
+        <li>Check your email for your confirmation receipt</li>
+        <li>Dr. Michael will text you within 24 hours</li>
+        <li>Labs will be ordered before your first visit</li>
+        <li>Your medications ship once labs are reviewed</li>
+      </ul>
+    </div>
+  </div>
+</div>
+</body>
+</html>

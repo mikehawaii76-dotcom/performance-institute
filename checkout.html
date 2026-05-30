@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Join The Performance Institute</title>
+  <script src="https://js.stripe.com/v3/"></script>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background: #f0f2f5;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+    }
+    .card {
+      background: #fff;
+      border-radius: 16px;
+      width: 100%;
+      max-width: 480px;
+      overflow: hidden;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+    }
+    .card-header {
+      background: #0a1628;
+      padding: 28px 32px;
+    }
+    .card-header h1 {
+      color: #fff;
+      font-size: 20px;
+      font-weight: 600;
+      margin-bottom: 4px;
+    }
+    .card-header p {
+      color: #8899bb;
+      font-size: 14px;
+    }
+    .card-body { padding: 32px; }
+
+    .price-display {
+      background: #f5f7fa;
+      border-radius: 12px;
+      padding: 20px;
+      text-align: center;
+      margin-bottom: 28px;
+    }
+    .price-amount {
+      font-size: 42px;
+      font-weight: 700;
+      color: #0a1628;
+      line-height: 1;
+    }
+    .price-amount span { font-size: 20px; vertical-align: top; margin-top: 8px; display: inline-block; }
+    .price-period { font-size: 14px; color: #666; margin-top: 6px; }
+    .price-includes { font-size: 13px; color: #888; margin-top: 4px; }
+    .savings-badge {
+      display: inline-block;
+      background: #e8f5e9;
+      color: #2e7d32;
+      font-size: 13px;
+      font-weight: 500;
+      padding: 4px 12px;
+      border-radius: 20px;
+      margin-top: 10px;
+    }
+
+    .field { margin-bottom: 18px; }
+    label {
+      display: block;
+      font-size: 13px;
+      font-weight: 500;
+      color: #444;
+      margin-bottom: 6px;
+    }
+    input[type="email"], input[type="text"] {
+      width: 100%;
+      padding: 11px 14px;
+      border: 1.5px solid #dde1e7;
+      border-radius: 8px;
+      font-size: 15px;
+      outline: none;
+      transition: border-color 0.2s;
+      color: #0a1628;
+    }
+    input:focus { border-color: #378ADD; }
+
+    .promo-row { display: flex; gap: 8px; }
+    .promo-row input { flex: 1; }
+    .apply-btn {
+      padding: 11px 18px;
+      background: #0a1628;
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      font-size: 14px;
+      font-weight: 500;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: background 0.2s;
+    }
+    .apply-btn:hover { background: #1a2e48; }
+
+    .promo-msg {
+      font-size: 13px;
+      margin-top: 6px;
+      min-height: 18px;
+    }
+    .promo-msg.success { color: #2e7d32; }
+    .promo-msg.error { color: #c62828; }
+
+    .submit-btn {
+      width: 100%;
+      padding: 15px;
+      background: #378ADD;
+      color: #fff;
+      border: none;
+      border-radius: 10px;
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+      margin-top: 8px;
+      transition: background 0.2s, opacity 0.2s;
+    }
+    .submit-btn:hover { background: #2a6dbf; }
+    .submit-btn:disabled { opacity: 0.6; cursor: not-allowed; }
+
+    .fine-print {
+      font-size: 12px;
+      color: #999;
+      text-align: center;
+      margin-top: 14px;
+      line-height: 1.5;
+    }
+
+    .includes-list {
+      list-style: none;
+      margin-bottom: 24px;
+    }
+    .includes-list li {
+      font-size: 14px;
+      color: #444;
+      padding: 5px 0;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .includes-list li::before {
+      content: "✓";
+      color: #378ADD;
+      font-weight: 700;
+      font-size: 15px;
+    }
+  </style>
+</head>
+<body>
+
+<div class="card">
+  <div class="card-header">
+    <h1>The Performance Institute</h1>
+    <p>Monthly Membership — All Inclusive</p>
+  </div>
+  <div class="card-body">
+
+    <div class="price-display">
+      <div class="price-amount" id="priceDisplay"><span>$</span><span id="priceNum">199</span></div>
+      <div class="price-period">per month</div>
+      <div class="price-includes">Medications · Visits · Labs</div>
+      <div class="savings-badge" id="savingsBadge" style="display:none;"></div>
+    </div>
+
+    <ul class="includes-list">
+      <li>Unlimited physician visits (telehealth)</li>
+      <li>All medications included</li>
+      <li>Monthly lab work included</li>
+      <li>Direct text access to Dr. Michael</li>
+    </ul>
+
+    <div class="field">
+      <label for="patientEmail">Your email address</label>
+      <input type="email" id="patientEmail" placeholder="you@example.com" required>
+    </div>
+
+    <div class="field">
+      <label for="promoCode">Promo code (optional)</label>
+      <div class="promo-row">
+        <input type="text" id="promoCode" placeholder="Enter code" style="text-transform:uppercase;">
+        <button class="apply-btn" onclick="applyPromo()">Apply</button>
+      </div>
+      <div class="promo-msg" id="promoMsg"></div>
+    </div>
+
+    <button class="submit-btn" id="checkoutBtn" onclick="startCheckout()">
+      Start Membership — $<span id="btnPrice">199</span>/mo
+    </button>
+
+    <p class="fine-print">
+      Secured by Stripe. Cancel anytime.<br>
+      Telehealth services available to Georgia residents only.
+    </p>
+
+  </div>
+</div>
+
+<script>
+  const BASE_PRICE = 199;
+  let currentPrice = BASE_PRICE;
+  let validPromoCode = null;
+
+  async function applyPromo() {
+    const code = document.getElementById("promoCode").value.trim();
+    const msg = document.getElementById("promoMsg");
+    if (!code) { msg.textContent = ""; return; }
+
+    msg.textContent = "Checking...";
+    msg.className = "promo-msg";
+
+    try {
+      const res = await fetch("/.netlify/functions/validate-promo", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ promoCode: code }),
+      });
+      const data = await res.json();
+      if (data.valid) {
+        validPromoCode = code.toUpperCase();
+        currentPrice = data.discountedPrice;
+        msg.textContent = `✓ Code applied — you save $${data.savings.toFixed(2)}/month`;
+        msg.className = "promo-msg success";
+        document.getElementById("priceNum").textContent = data.discountedPrice.toFixed(2).replace(/\.00$/, "");
+        document.getElementById("btnPrice").textContent = data.discountedPrice.toFixed(2).replace(/\.00$/, "");
+        const badge = document.getElementById("savingsBadge");
+        badge.textContent = `Saving $${data.savings.toFixed(2)}/month`;
+        badge.style.display = "inline-block";
+      } else {
+        validPromoCode = null;
+        msg.textContent = "Invalid promo code.";
+        msg.className = "promo-msg error";
+      }
+    } catch (e) {
+      msg.textContent = "Could not validate code. Try again.";
+      msg.className = "promo-msg error";
+    }
+  }
+
+  async function startCheckout() {
+    const email = document.getElementById("patientEmail").value.trim();
+    if (!email || !email.includes("@")) {
+      alert("Please enter a valid email address.");
+      return;
+    }
+
+    const btn = document.getElementById("checkoutBtn");
+    btn.disabled = true;
+    btn.textContent = "Redirecting to secure checkout...";
+
+    try {
+      const res = await fetch("/.netlify/functions/create-checkout", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ promoCode: validPromoCode, patientEmail: email }),
+      });
+      const data = await res.json();
+
+      const stripe = Stripe(data.publishableKey || window.STRIPE_PK);
+      await stripe.redirectToCheckout({ sessionId: data.sessionId });
+    } catch (e) {
+      alert("Something went wrong. Please try again.");
+      btn.disabled = false;
+      btn.innerHTML = `Start Membership — $<span id="btnPrice">${currentPrice}</span>/mo`;
+    }
+  }
+</script>
+
+</body>
+</html>

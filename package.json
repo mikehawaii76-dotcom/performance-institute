@@ -1,0 +1,9 @@
+{
+  "name": "performance-institute-payments",
+  "version": "1.0.0",
+  "description": "Payment and referral tracking system for The Performance Institute",
+  "dependencies": {
+    "nodemailer": "^6.9.0",
+    "stripe": "^14.0.0"
+  }
+}
