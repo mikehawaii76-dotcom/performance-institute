@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Terms & Conditions | The Performance Institute</title>
+  <meta name="description" content="Terms and Conditions for The Performance Institute — Men's Health Telehealth Practice in Georgia." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --black: #0a0a0a;
+      --dark: #111111;
+      --card: #161616;
+      --border: #2a2a2a;
+      --text: #e8e4dc;
+      --muted: #888880;
+      --gold: #c9a96e;
+      --gold-light: #e2c898;
+      --white: #f5f1eb;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--black);
+      color: var(--text);
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 300;
+      line-height: 1.7;
+      font-size: 16px;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(10,10,10,0.95);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      padding: 0 48px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 68px;
+    }
+
+    .nav-logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1rem;
+      color: var(--white);
+      text-decoration: none;
+      letter-spacing: 0.02em;
+      line-height: 1.2;
+    }
+
+    .nav-logo span {
+      display: block;
+      font-size: 0.65rem;
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 400;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--gold);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 36px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 0.82rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      font-weight: 400;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--white); }
+
+    .nav-cta {
+      background: transparent;
+      border: 1px solid var(--gold);
+      color: var(--gold);
+      padding: 9px 22px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.8rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      text-decoration: none;
+      transition: background 0.2s, color 0.2s;
+      cursor: pointer;
+    }
+
+    .nav-cta:hover {
+      background: var(--gold);
+      color: var(--black);
+    }
+
+    /* ── PAGE HEADER ── */
+    .page-header {
+      padding: 96px 48px 64px;
+      max-width: 860px;
+      margin: 0 auto;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .page-header .eyebrow {
+      font-size: 0.72rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold);
+      font-weight: 400;
+      margin-bottom: 20px;
+    }
+
+    .page-header h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.2rem, 5vw, 3.2rem);
+      font-weight: 400;
+      line-height: 1.15;
+      color: var(--white);
+      margin-bottom: 20px;
+    }
+
+    .page-header .meta {
+      color: var(--muted);
+      font-size: 0.88rem;
+    }
+
+    /* ── CONTENT ── */
+    .content {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 64px 48px 120px;
+    }
+
+    .content section {
+      margin-bottom: 56px;
+    }
+
+    .content h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.4rem;
+      font-weight: 600;
+      color: var(--white);
+      margin-bottom: 20px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .content p {
+      color: var(--text);
+      margin-bottom: 16px;
+      font-size: 0.97rem;
+      line-height: 1.8;
+    }
+
+    .content ul {
+      list-style: none;
+      margin-bottom: 16px;
+      padding-left: 0;
+    }
+
+    .content ul li {
+      padding: 6px 0 6px 20px;
+      position: relative;
+      color: var(--text);
+      font-size: 0.97rem;
+    }
+
+    .content ul li::before {
+      content: '·';
+      position: absolute;
+      left: 4px;
+      color: var(--gold);
+      font-size: 1.2rem;
+      line-height: 1.5;
+    }
+
+    .content a {
+      color: var(--gold);
+      text-decoration: none;
+      border-bottom: 1px solid rgba(201,169,110,0.3);
+      transition: border-color 0.2s;
+    }
+
+    .content a:hover { border-color: var(--gold); }
+
+    .highlight-box {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-left: 3px solid var(--gold);
+      padding: 24px 28px;
+      margin-bottom: 16px;
+      font-size: 0.95rem;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--dark);
+      border-top: 1px solid var(--border);
+      padding: 56px 48px;
+    }
+
+    .footer-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 48px;
+      flex-wrap: wrap;
+    }
+
+    .footer-brand .nav-logo { font-size: 1rem; }
+
+    .footer-links {
+      display: flex;
+      gap: 28px;
+      list-style: none;
+      flex-wrap: wrap;
+    }
+
+    .footer-links a {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 0.82rem;
+      letter-spacing: 0.06em;
+      transition: color 0.2s;
+    }
+
+    .footer-links a:hover { color: var(--white); }
+
+    .footer-copy {
+      width: 100%;
+      padding-top: 40px;
+      border-top: 1px solid var(--border);
+      color: var(--muted);
+      font-size: 0.78rem;
+      letter-spacing: 0.04em;
+    }
+
+    .footer-address {
+      color: var(--muted);
+      font-size: 0.82rem;
+      line-height: 1.7;
+    }
+
+    @media (max-width: 768px) {
+      nav { padding: 0 24px; }
+      .nav-links { display: none; }
+      .page-header, .content { padding-left: 24px; padding-right: 24px; }
+      footer { padding: 40px 24px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a href="/" class="nav-logo">
+      The Performance Institute
+      <span>Men's Health · Georgia</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="/#difference">The Science</a></li>
+      <li><a href="/#services">Services</a></li>
+      <li><a href="/#about">About</a></li>
+      <li><a href="/#pricing">Pricing</a></li>
+      <li><a href="/#faq">FAQ</a></li>
+    </ul>
+    <a href="/#contact" class="nav-cta">Message Dr. Michael</a>
+  </nav>
+
+  <!-- PAGE HEADER -->
+  <header class="page-header">
+    <p class="eyebrow">Legal</p>
+    <h1>Terms &amp; Conditions</h1>
+    <p class="meta">Last updated: May 30, 2025 &nbsp;·&nbsp; The Performance Institute</p>
+  </header>
+
+  <!-- CONTENT -->
+  <main class="content">
+
+    <section>
+      <div class="highlight-box">
+        Please read these Terms and Conditions carefully before using our services. By accessing our website or engaging with The Performance Institute, you agree to be bound by these terms.
+      </div>
+    </section>
+
+    <section>
+      <h2>1. About The Performance Institute</h2>
+      <p>The Performance Institute ("we," "us," or "our") is a physician-led men's health telehealth practice based in Georgia. Our services are provided exclusively to residents of the state of Georgia and are delivered entirely via telehealth.</p>
+      <p><strong>Business Address:</strong> [BUSINESS ADDRESS PLACEHOLDER]<br />
+      <strong>Contact:</strong> <a href="mailto:info@mensperformancemd.com">info@mensperformancemd.com</a></p>
+    </section>
+
+    <section>
+      <h2>2. Eligibility</h2>
+      <p>To use our services, you must:</p>
+      <ul>
+        <li>Be at least 18 years of age</li>
+        <li>Be a resident of the state of Georgia</li>
+        <li>Provide accurate and complete information during registration and consultation</li>
+        <li>Not be using our services as a substitute for emergency medical care</li>
+      </ul>
+      <p>We reserve the right to decline service to any individual at our discretion, including for medical or clinical reasons.</p>
+    </section>
+
+    <section>
+      <h2>3. Nature of Services — Not Emergency Care</h2>
+      <p>The Performance Institute provides elective, non-emergency men's health services via telehealth. Our services are not designed to handle medical emergencies. If you are experiencing a medical emergency, call 911 or go to your nearest emergency room immediately.</p>
+      <p>Telehealth consultations have inherent limitations compared to in-person care. By engaging our services, you acknowledge these limitations and agree that certain conditions may require in-person evaluation that we cannot provide.</p>
+    </section>
+
+    <section>
+      <h2>4. Physician-Patient Relationship</h2>
+      <p>A physician-patient relationship is established only after Dr. Michael has reviewed your information, conducted a consultation, and agreed to provide care. Submitting a contact form or inquiry does not establish a physician-patient relationship.</p>
+      <p>Dr. Michael retains full clinical discretion in all treatment decisions. Nothing in these terms limits his professional judgment or obligates him to prescribe any specific medication.</p>
+    </section>
+
+    <section>
+      <h2>5. Membership and Payment</h2>
+      <p>Our services are offered on a monthly membership basis at the rate disclosed at the time of enrollment. Your membership includes:</p>
+      <ul>
+        <li>Physician consultation with Dr. Michael</li>
+        <li>Compounded medication shipped directly to your door</li>
+        <li>Lab work ordering and results review</li>
+        <li>Direct messaging access to Dr. Michael</li>
+        <li>Ongoing treatment adjustments based on your labs</li>
+      </ul>
+      <p><strong>Not included:</strong> Initial and ongoing lab work is billed separately at cost through our preferred lab partner (approximately $90 every six months). Any additional services not described above may be billed separately.</p>
+      <p>We are a cash-pay practice. We do not accept insurance. All fees are due at the time of service. You are responsible for all charges incurred under your membership.</p>
+    </section>
+
+    <section>
+      <h2>6. Cancellation and Refunds</h2>
+      <p>You may cancel your membership at any time by contacting us at <a href="mailto:info@mensperformancemd.com">info@mensperformancemd.com</a>. Cancellation will take effect at the end of your current billing period. We do not provide refunds for partial months of service already rendered.</p>
+      <p>If medication has already been compounded and shipped, that cost is non-refundable. We reserve the right to discontinue your membership at any time for clinical, legal, or business reasons.</p>
+    </section>
+
+    <section>
+      <h2>7. Prescription Medications</h2>
+      <p>Medications prescribed through The Performance Institute are prescribed solely for your personal use based on your individual clinical evaluation. You agree:</p>
+      <ul>
+        <li>Not to share, sell, or transfer any prescribed medication to another person</li>
+        <li>To use medications only as directed by Dr. Michael</li>
+        <li>To promptly report any adverse reactions or concerns to Dr. Michael</li>
+        <li>To disclose all other medications, supplements, and health conditions accurately</li>
+      </ul>
+      <p>Certain medications may be classified as controlled substances and are subject to applicable federal and state laws. Misuse of prescription medications is illegal and may result in immediate termination of services.</p>
+    </section>
+
+    <section>
+      <h2>8. SMS Communications</h2>
+      <p>By submitting our contact form or enrolling in our services, you consent to receive SMS messages from The Performance Institute for care-related communications, appointment reminders, and responses to your inquiries. Message and data rates may apply. Reply STOP to opt out at any time.</p>
+    </section>
+
+    <section>
+      <h2>9. Accuracy of Information</h2>
+      <p>You agree to provide truthful, accurate, and complete information at all times. Providing false or misleading medical history, identity information, or other material facts may result in immediate termination of services and may expose you to legal liability.</p>
+    </section>
+
+    <section>
+      <h2>10. Limitation of Liability</h2>
+      <p>To the fullest extent permitted by law, The Performance Institute, its physicians, employees, and agents shall not be liable for any indirect, incidental, special, or consequential damages arising out of or related to your use of our services. Our total liability to you for any claim shall not exceed the amount you paid us in the three months preceding the claim.</p>
+      <p>Nothing in this section limits liability for gross negligence, willful misconduct, or as otherwise prohibited by law.</p>
+    </section>
+
+    <section>
+      <h2>11. Intellectual Property</h2>
+      <p>All content on our website — including text, design, graphics, and branding — is the property of The Performance Institute and is protected by applicable intellectual property laws. You may not reproduce, distribute, or create derivative works from our content without our express written permission.</p>
+    </section>
+
+    <section>
+      <h2>12. Governing Law</h2>
+      <p>These Terms and Conditions are governed by and construed in accordance with the laws of the State of Georgia, without regard to its conflict of law provisions. Any disputes shall be resolved in the courts of Georgia.</p>
+    </section>
+
+    <section>
+      <h2>13. Changes to These Terms</h2>
+      <p>We may update these Terms and Conditions from time to time. Continued use of our services after any changes constitutes acceptance of the updated terms. We will update the "Last updated" date at the top of this page when changes are made.</p>
+    </section>
+
+    <section>
+      <h2>14. Contact Us</h2>
+      <p>If you have questions about these Terms and Conditions, please contact us:</p>
+      <p>
+        <strong>The Performance Institute</strong><br />
+        [BUSINESS ADDRESS PLACEHOLDER]<br />
+        <a href="mailto:info@mensperformancemd.com">info@mensperformancemd.com</a>
+      </p>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <a href="/" class="nav-logo">
+          The Performance Institute
+          <span>Men's Health · Georgia</span>
+        </a>
+      </div>
+      <ul class="footer-links">
+        <li><a href="/#difference">The Science</a></li>
+        <li><a href="/#services">Services</a></li>
+        <li><a href="/#about">About</a></li>
+        <li><a href="/#pricing">Pricing</a></li>
+        <li><a href="/#contact">Contact</a></li>
+        <li><a href="/privacy-policy.html">Privacy Policy</a></li>
+        <li><a href="/terms.html">Terms &amp; Conditions</a></li>
+      </ul>
+      <div class="footer-address">
+        [BUSINESS ADDRESS PLACEHOLDER]<br />
+        <a href="mailto:info@mensperformancemd.com" style="color: var(--gold); text-decoration: none;">info@mensperformancemd.com</a>
+      </div>
+      <p class="footer-copy">© 2025 The Performance Institute · mensperformancemd.com &nbsp;·&nbsp; Telehealth services available to Georgia residents only.</p>
+    </div>
+  </footer>
+
+</body>
+</html>
