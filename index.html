@@ -217,14 +217,13 @@ footer{background:var(--navy-darkest);border-top:1px solid var(--border);padding
             Yes &mdash; and that's exactly the problem with TRT. Let me explain what's really happening and why an FDA-approved oral medication may change everything for you.
           </div>
         </div>
-        <form class="card-input-area" name="hero-contact" onsubmit="handleSubmit(event)">
-          <input type="hidden" name="form-name" value="hero-contact">
+        <form class="card-input-area" action="https://formspree.io/f/meeberlq" method="POST" onsubmit="handleSubmit(event)">
           <input class="card-input" type="text" name="name" placeholder="Your name" required>
-          <input class="card-input" type="tel" name="phone" placeholder="Your phone number" required>
+          <input class="card-input" type="email" name="email" placeholder="Your email address" required>
+          <input class="card-input" type="tel" name="phone" placeholder="Your phone number (optional)">
           <input class="card-input" type="text" name="message" placeholder="Your question or concern">
-          <label style="display:flex;align-items:flex-start;gap:.65rem;cursor:pointer;text-align:left"><input type="checkbox" name="sms-consent" style="margin-top:.25rem;flex-shrink:0;accent-color:var(--silver)"><span style="font-size:.68rem;color:var(--text-muted);line-height:1.5">By checking this box, I agree to receive SMS text messages from The Performance Institute regarding appointment reminders, health updates, and care-related communications. Message frequency varies. Message and data rates may apply. Text HELP for help, STOP to cancel at any time.</span></label>
           <button type="submit" class="card-submit">Send Message to Dr. Michael</button>
-
+          <p class="card-disclaimer">Dr. Michael replies personally &mdash; usually within a few hours.</p>
         </form>
       </div>
     </div>
@@ -372,14 +371,13 @@ footer{background:var(--navy-darkest);border-top:1px solid var(--border);padding
     <div style="display:flex;justify-content:center">
       <div class="hero-card" style="max-width:480px;width:100%">
         <p class="card-label">Direct physician access</p>
-        <form class="card-input-area" name="contact" onsubmit="handleSubmit(event)">
-          <input type="hidden" name="form-name" value="contact">
+        <form class="card-input-area" action="https://formspree.io/f/meeberlq" method="POST" onsubmit="handleSubmit(event)">
           <input class="card-input" type="text" name="name" placeholder="Your name" required>
-          <input class="card-input" type="tel" name="phone" placeholder="Your phone number" required>
+          <input class="card-input" type="email" name="email" placeholder="Your email address" required>
+          <input class="card-input" type="tel" name="phone" placeholder="Your phone number (optional)">
           <input class="card-input" type="text" name="message" placeholder="Tell Dr. Michael what's going on">
-          <label style="display:flex;align-items:flex-start;gap:.65rem;cursor:pointer;text-align:left"><input type="checkbox" name="sms-consent" style="margin-top:.25rem;flex-shrink:0;accent-color:var(--silver)"><span style="font-size:.68rem;color:var(--text-muted);line-height:1.5">By checking this box, I agree to receive SMS text messages from The Performance Institute regarding appointment reminders, health updates, and care-related communications. Message frequency varies. Message and data rates may apply. Text HELP for help, STOP to cancel at any time.</span></label>
           <button type="submit" class="card-submit">Send Message to Dr. Michael</button>
-
+          <p class="card-disclaimer">Dr. Michael replies personally &mdash; usually within a few hours.</p>
         </form>
       </div>
     </div>
@@ -405,23 +403,31 @@ async function handleSubmit(e) {
   e.preventDefault();
   const form = e.target;
   const btn = form.querySelector('button[type="submit"]');
-  const name = form.querySelector('[name="name"]').value;
-  const phone = form.querySelector('[name="phone"]').value;
-  const msgEl = form.querySelector('[name="message"]');
-  const message = msgEl ? msgEl.value : '';
   btn.textContent = 'Sending...';
   btn.disabled = true;
   try {
-    await fetch('/.netlify/functions/send-sms', {
+    const response = await fetch(form.action, {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ name, phone, message })
+      body: new FormData(form),
+      headers: { 'Accept': 'application/json' }
     });
-  } catch (err) { console.log('SMS error:', err); }
-  btn.textContent = 'Message Sent — Dr. Michael Will Be in Touch';
-  btn.style.background = '#70c8a0';
-  btn.style.color = '#0a1628';
-  form.querySelectorAll('input[type="text"], input[type="tel"], textarea').forEach(el => el.value = '');
+    if (response.ok) {
+      btn.textContent = 'Message Sent — Dr. Michael Will Be in Touch';
+      btn.style.background = '#70c8a0';
+      btn.style.color = '#0a1628';
+      form.querySelectorAll('input, textarea').forEach(el => el.value = '');
+    } else {
+      btn.textContent = 'Something went wrong — please try again';
+      btn.style.background = '#e87070';
+      btn.style.color = '#fff';
+      btn.disabled = false;
+    }
+  } catch (err) {
+    btn.textContent = 'Something went wrong — please try again';
+    btn.style.background = '#e87070';
+    btn.style.color = '#fff';
+    btn.disabled = false;
+  }
 }
 </script>
 </body>
